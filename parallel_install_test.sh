@@ -100,7 +100,7 @@ set +e
 clean_installed_java
 set -e
 for COMMANDSTRING in YumDnf "Rpm"; do
-  LOGFILE=$TMPRESULTS/parallelInstall$COMMANDSTRING.log
+  LOGFILE=$TMPRESULTS/parallel_install_log_$COMMANDSTRING.log
   echo "" > $LOGFILE
   if [ $RUNNING = false ]; then
     let "IGNORED+=1"
@@ -139,7 +139,7 @@ done
 
 let "TESTS = $FAILED + $PASSED + $IGNORED"
 
-XMLREPORT=$TMPRESULTS/parallelTestJtreg.jtr.xml
+XMLREPORT=$TMPRESULTS/parallel_install_log.jtr.xml
 printXmlHeader $PASSED $FAILED $TESTS $IGNORED "parallelInstalls" > $XMLREPORT
 echo "$BODY" >> $XMLREPORT
 printXmlFooter >> $XMLREPORT
