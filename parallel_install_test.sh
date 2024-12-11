@@ -78,6 +78,11 @@ if [ "x$RFaT" == "x" ]; then
 fi
 source ${RFaT}/jtreg-shell-xml.sh
 
+if [ "x$TMPRESULTS" == "x" ]; then
+  TMPRESULTS=`pwd`
+fi
+
+
 echo "" > $TMPRESULTS/parallel_install_log.txt
 
 let "PASSED+=1"
